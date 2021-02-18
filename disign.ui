@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>362</width>
-    <height>616</height>
+    <width>530</width>
+    <height>755</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,106 +21,123 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QCheckBox" name="checkBox_play">
-        <property name="text">
-         <string>Играть в динамики</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QCheckBox" name="checkBox_autorun">
+          <property name="text">
+           <string>Автозагрузка</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_speaker">
+          <property name="text">
+           <string>Звук в динамики</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
+       <widget class="QPushButton" name="beep_btn">
+        <property name="minimumSize">
          <size>
-          <width>40</width>
-          <height>20</height>
+          <width>30</width>
+          <height>30</height>
          </size>
         </property>
-       </spacer>
+        <property name="text">
+         <string>BEEP</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="video_instr_btn">
-        <property name="text">
-         <string>Видео инструкция</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
+        <property name="minimumSize">
          <size>
-          <width>40</width>
-          <height>20</height>
+          <width>0</width>
+          <height>30</height>
          </size>
         </property>
-       </spacer>
+        <property name="text">
+         <string>Инструкция</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="open_snds_btn">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Папка со звуками</string>
+         <string>Папка звуков</string>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item>
        <widget class="QPushButton" name="pushButton_remove_all_snds">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Сбросить все звуки</string>
+         <string>Сбросить звуки</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_remove_all_hk">
-        <property name="text">
-         <string>Сбросить все хоткеи</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
+        <property name="minimumSize">
          <size>
-          <width>40</width>
-          <height>20</height>
+          <width>0</width>
+          <height>30</height>
          </size>
         </property>
-       </spacer>
+        <property name="text">
+         <string>Сбросить хоткеи</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="volume_lable">
-        <property name="text">
-         <string>Громкость: </string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="volume_lable">
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Громкость: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <pointsize>7</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>(На динамики не влияет)</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QLabel" name="show_volume_lable">
@@ -153,64 +170,145 @@
     </item>
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="14" column="2">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_8"/>
-      </item>
-      <item row="7" column="4">
-       <widget class="QPushButton" name="choose_sound_6">
-        <property name="text">
-         <string>Выбрать звук</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="2">
-       <widget class="QPushButton" name="choose_sound_8">
-        <property name="text">
-         <string>Выбрать звук</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="4">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_3"/>
-      </item>
-      <item row="14" column="0">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_7"/>
-      </item>
-      <item row="9" column="4">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_6"/>
-      </item>
-      <item row="13" column="0">
-       <widget class="QPushButton" name="sound_btn_7">
+      <item row="8" column="2">
+       <widget class="Line" name="line_3">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>100</height>
-         </size>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
         </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
+        <property name="lineWidth">
+         <number>2</number>
         </property>
-        <property name="text">
-         <string>Не задано</string>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="3">
+       <widget class="Line" name="line_8">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="4">
+       <widget class="Line" name="line_13">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="Line" name="line_9">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="Line" name="line_10">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
       <item row="8" column="0">
+       <widget class="Line" name="line_12">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="Line" name="line_11">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="4">
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <item>
+         <widget class="QPushButton" name="choose_snd_9">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_9">
+          <property name="text">
+           <string>Хоктей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="7" column="0">
        <widget class="QPushButton" name="sound_btn_4">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>160</width>
+          <height>160</height>
          </size>
         </property>
         <property name="font">
@@ -221,19 +319,42 @@
          </font>
         </property>
         <property name="text">
-         <string>Не задано</string>
+         <string/>
         </property>
        </widget>
       </item>
-      <item row="8" column="4">
+      <item row="10" column="0">
+       <widget class="QPushButton" name="sound_btn_7">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>160</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="4">
        <widget class="QPushButton" name="sound_btn_6">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>160</width>
+          <height>160</height>
          </size>
         </property>
         <property name="font">
@@ -244,68 +365,37 @@
          </font>
         </property>
         <property name="text">
-         <string>Не задано</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="choose_sound_2">
-        <property name="text">
-         <string>Выбрать звук</string>
+         <string/>
         </property>
        </widget>
       </item>
       <item row="9" column="2">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_5"/>
-      </item>
-      <item row="14" column="4">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_9"/>
-      </item>
-      <item row="11" column="0">
-       <widget class="QPushButton" name="choose_sound_7">
-        <property name="text">
-         <string>Выбрать звук</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_4"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_1"/>
-      </item>
-      <item row="5" column="2">
-       <widget class="QKeySequenceEdit" name="keySequenceEdit_2"/>
+       <layout class="QHBoxLayout" name="horizontalLayout_11">
+        <item>
+         <widget class="QPushButton" name="choose_snd_8">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_8">
+          <property name="text">
+           <string>Хоктей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item row="3" column="0">
        <widget class="QPushButton" name="sound_btn_1">
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Bruh</string>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="2">
-       <widget class="QPushButton" name="sound_btn_8">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>160</width>
+          <height>160</height>
          </size>
         </property>
         <property name="font">
@@ -316,19 +406,19 @@
          </font>
         </property>
         <property name="text">
-         <string>Не задано</string>
+         <string/>
         </property>
        </widget>
       </item>
-      <item row="13" column="4">
+      <item row="10" column="4">
        <widget class="QPushButton" name="sound_btn_9">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>160</width>
+          <height>160</height>
          </size>
         </property>
         <property name="font">
@@ -339,7 +429,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Не задано</string>
+         <string/>
         </property>
         <property name="checkable">
          <bool>false</bool>
@@ -349,15 +439,38 @@
         </property>
        </widget>
       </item>
-      <item row="8" column="2">
+      <item row="3" column="2">
+       <widget class="QPushButton" name="sound_btn_2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>160</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
        <widget class="QPushButton" name="sound_btn_5">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>160</width>
+          <height>160</height>
          </size>
         </property>
         <property name="font">
@@ -369,19 +482,19 @@
          </font>
         </property>
         <property name="text">
-         <string>Не задано</string>
+         <string/>
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
-       <widget class="QPushButton" name="sound_btn_2">
+      <item row="10" column="2">
+       <widget class="QPushButton" name="sound_btn_8">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>160</width>
+          <height>160</height>
          </size>
         </property>
         <property name="font">
@@ -392,14 +505,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Не задано</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="2">
-       <widget class="QPushButton" name="choose_sound_5">
-        <property name="text">
-         <string>Выбрать звук</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -410,8 +516,8 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>100</width>
-          <height>100</height>
+          <width>160</width>
+          <height>160</height>
          </size>
         </property>
         <property name="font">
@@ -422,25 +528,11 @@
          </font>
         </property>
         <property name="text">
-         <string>Не задано</string>
+         <string/>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="choose_sound_1">
-        <property name="text">
-         <string>Выбрать звук</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="4">
-       <widget class="QPushButton" name="choose_sound_3">
-        <property name="text">
-         <string>Выбрать звук</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="2">
+      <item row="5" column="2">
        <widget class="Line" name="line_2">
         <property name="enabled">
          <bool>true</bool>
@@ -456,22 +548,24 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="0">
-       <widget class="QPushButton" name="choose_sound_4">
-        <property name="text">
-         <string>Выбрать звук</string>
+      <item row="7" column="1">
+       <widget class="Line" name="line_5">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>2</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
-      <item row="11" column="4">
-       <widget class="QPushButton" name="choose_sound_9">
-        <property name="text">
-         <string>Выбрать звук</string>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="3">
-       <widget class="Line" name="line_7">
+      <item row="10" column="1">
+       <widget class="Line" name="line_6">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -502,56 +596,8 @@
         </property>
        </widget>
       </item>
-      <item row="8" column="1">
-       <widget class="Line" name="line_5">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="1">
-       <widget class="Line" name="line_6">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="3">
-       <widget class="Line" name="line_8">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <widget class="Line" name="line_9">
+      <item row="10" column="3">
+       <widget class="Line" name="line_7">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -567,84 +613,130 @@
        </widget>
       </item>
       <item row="6" column="4">
-       <widget class="Line" name="line_11">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_9">
+        <item>
+         <widget class="QPushButton" name="choose_snd_6">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_6">
+          <property name="text">
+           <string>Хоткей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="9" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <widget class="QPushButton" name="choose_snd_7">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_7">
+          <property name="text">
+           <string>Хоктей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item row="6" column="0">
-       <widget class="Line" name="line_10">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QPushButton" name="choose_snd_4">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_4">
+          <property name="text">
+           <string>Хоктей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item row="10" column="4">
-       <widget class="Line" name="line_13">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
+      <item row="6" column="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="QPushButton" name="choose_snd_5">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_5">
+          <property name="text">
+           <string>Хоткей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item row="10" column="2">
-       <widget class="Line" name="line_3">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QPushButton" name="choose_snd_1">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_1">
+          <property name="text">
+           <string>Хоткей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item row="10" column="0">
-       <widget class="Line" name="line_12">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
+      <item row="2" column="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QPushButton" name="choose_snd_2">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_2">
+          <property name="text">
+           <string>Хоткей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="4">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QPushButton" name="choose_snd_3">
+          <property name="text">
+           <string>Звук</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="choose_hotkey_3">
+          <property name="text">
+           <string>Хоткей</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
