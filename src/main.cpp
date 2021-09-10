@@ -14,12 +14,19 @@
 #define HOLL_4_1_PIN 44
 #define HOLL_4_2_PIN 45
 
+#define HOLL_LEFT_1_PIN 24
+#define HOLL_LEFT_2_PIN 25
+#define HOLL_RIGHT_1_PIN 26
+#define HOLL_RIGHT_2_PIN 27
+
 #define LEFT_RIGHT_POT_PIN A0
+#define BATTERY_PIN A3
 
 String strData = "";
 boolean recievedFlag;
 
 long int timer_led;
+long int timer_check_battery;
 
 bool rainbow = 0;
 
@@ -28,6 +35,8 @@ int b = 0;   // Синий потушен
 int g = 0;   // Зелёный потушен
 
 int holl_1_1, holl_1_2, holl_2_1, holl_2_2, holl_3_1, holl_3_2, holl_4_1, holl_4_2;
+int holl_left_1, holl_left_2, holl_right_1, holl_right_2;
+int battery_val;
 
 char floatbufVar_body_x[32];
 char floatbufVar_body_y[32];
@@ -109,25 +118,46 @@ String getValue(String data, char separator, int index)
 
 void head_left_right(int val)
 {
-  motorHead1.setSpeed(val / 2);
-  motorHead3.setSpeed(val / -2);
+  if (val == 0)
+  {
+    motorHead1.setMode(STOP);
+    motorHead3.setMode(STOP);
+  }
+  else
+  {
+    motorHead1.setMode(AUTO);
+    motorHead3.setMode(AUTO);
+
+    motorHead1.setSpeed(val / 2);
+    motorHead3.setSpeed(val / -2);
+  }
 }
 
 void head_up_down(int val)
 {
-  motorHead2.setSpeed(val / -2);
+  if (val == 0)
+  {
+    motorHead2.setMode(STOP);
+  }
+  else
+  {
+    motorHead2.setMode(AUTO);
+    motorHead2.setSpeed(val / -2);
+  }
 }
 
 void head_forward_back(int val)
 {
-
-  if (val > 0)
+  if (val == 0)
   {
-    motorHead1.setSpeed(val / -2);
-    motorHead4.setSpeed(val / 2);
+    motorHead1.setMode(STOP);
+    motorHead4.setMode(STOP);
   }
   else
   {
+    motorHead1.setMode(AUTO);
+    motorHead4.setMode(AUTO);
+
     motorHead1.setSpeed(val / 2);
     motorHead4.setSpeed(val / -2);
   }
@@ -146,6 +176,14 @@ void setup()
   pinMode(HOLL_4_1_PIN, INPUT);
   pinMode(HOLL_4_2_PIN, INPUT);
 
+  pinMode(HOLL_RIGHT_1_PIN, INPUT);
+  pinMode(HOLL_RIGHT_1_PIN, INPUT);
+  pinMode(HOLL_LEFT_1_PIN, INPUT);
+  pinMode(HOLL_LEFT_2_PIN, INPUT);
+
+  pinMode(BATTERY_PIN, INPUT);
+  pinMode(LEFT_RIGHT_POT_PIN, INPUT);
+
   led.setBrightness(255);
 
   motorL.setMode(AUTO);
@@ -156,8 +194,8 @@ void setup()
   motorHead3.setMode(AUTO);
   motorHead4.setMode(AUTO);
 
-  motorL.setMinDuty(15);
-  motorR.setMinDuty(15);
+  motorL.setMinDuty(21);
+  motorR.setMinDuty(21);
 
   Serial.println("Ready");
 
@@ -171,6 +209,17 @@ void loop()
     ledManager();
   }
 
+  if (millis() - timer_check_battery >= 4000)
+  {
+    battery_val = analogRead(BATTERY_PIN);
+    battery_val = map(battery_val, 0, 1023, 0, 100);
+
+    Serial.print("Bat: ");
+    Serial.println(battery_val);
+    
+    timer_check_battery = millis();
+  }
+
   holl_1_1 = digitalRead(HOLL_1_1_PIN);
   holl_1_2 = digitalRead(HOLL_1_2_PIN);
   holl_2_1 = digitalRead(HOLL_2_1_PIN);
@@ -179,6 +228,12 @@ void loop()
   holl_3_2 = digitalRead(HOLL_3_2_PIN);
   holl_4_1 = digitalRead(HOLL_4_1_PIN);
   holl_4_2 = digitalRead(HOLL_4_2_PIN);
+
+  holl_left_1 = digitalRead(HOLL_LEFT_1_PIN);
+  holl_left_2 = digitalRead(HOLL_LEFT_2_PIN);
+
+  holl_right_1 = digitalRead(HOLL_RIGHT_1_PIN);
+  holl_right_2 = digitalRead(HOLL_RIGHT_2_PIN);
 
   while (Serial.available() > 0)
   {
@@ -191,7 +246,7 @@ void loop()
     if (strData != "")
     {
       String state = getValue(strData, ';', 0);
-      if (state == "m")
+      if (state == "m" || state == "mh")
       {
         String body_x_str = getValue(strData, ';', 1);
         String body_y_str = getValue(strData, ';', 2);
@@ -214,8 +269,8 @@ void loop()
         int dutyL = body_y - body_x;
         int dutyR = body_y + body_x;
 
-        motorL.setSpeed(dutyL);
-        motorR.setSpeed(dutyR);
+        motorL.setSpeed(dutyL * 0.35);
+        motorR.setSpeed(dutyR * 0.35 * 0.6648);
 
         head_x_str.toCharArray(floatbufVar_head_x, sizeof(floatbufVar_head_x));
         head_x = atof(floatbufVar_head_x);
@@ -230,7 +285,6 @@ void loop()
         head_y = map(head_y, -100, 100, -255, 255);
 
         head_left_right(head_x);
-        head_up_down(head_y);
 
         Serial.print("HOLL: ");
         Serial.print(holl_1_1);
@@ -250,6 +304,7 @@ void loop()
         Serial.print(holl_4_2);
         Serial.print(" ");
       }
+
       else if (state == "l")
       {
         String ledr = getValue(strData, ';', 1);
@@ -266,8 +321,17 @@ void loop()
 
         set_led(ledRint, ledGint, ledBint);
       }
+      if (state == "m")
+      {
+        head_up_down(head_y);
+      }
+      if (state == "mh")
+      {
+        head_forward_back(head_y);
+      }
     }
     strData = "";
     recievedFlag = false;
   }
 }
+a
