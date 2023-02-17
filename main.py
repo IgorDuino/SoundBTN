@@ -22,14 +22,14 @@ class ExampleApp(QtWidgets.QMainWindow, disign.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
 
-        self.path_to_snds = os.path.realpath('sounds')
+        self.sounds_path = os.path.realpath('sounds')
         self.link_video = 'https://www.youtube.com/'
 
         # Tray settings
         self.tray_icon = QSystemTrayIcon(self)
         self.tray_icon.setIcon(self.style().standardIcon(QStyle.SP_ComputerIcon))
 
-        show_action = QAction("Разверуть", self)
+        show_action = QAction("Развернуть", self)
         hide_action = QAction("Спрятать", self)
         quit_action = QAction("Закрыть", self)
 
@@ -91,7 +91,7 @@ class ExampleApp(QtWidgets.QMainWindow, disign.Ui_MainWindow):
         self.checkBox_speaker.clicked.connect(self.checkbox_play_f)
 
         # Buttons connect
-        self.open_snds_btn.clicked.connect(lambda: os.startfile(self.path_to_snds))
+        self.open_snds_btn.clicked.connect(lambda: os.startfile(self.sounds_path))
         self.video_instr_btn.clicked.connect(lambda: os.system(f'start {self.link_video}'))
         self.pushButton_remove_all_hk.clicked.connect(self.remove_all_hk)
         self.pushButton_remove_all_snds.clicked.connect(self.remove_all_snds)
@@ -174,7 +174,7 @@ class ExampleApp(QtWidgets.QMainWindow, disign.Ui_MainWindow):
     def play(self, name):
         if self.speaker:
             playsound.playsound(f'{name}.mp3', False)
-            mixer.music.load((f'{name}.mp3'))
+            mixer.music.load(f'{name}.mp3')
             mixer.music.play()
 
         else:
@@ -198,11 +198,11 @@ class ExampleApp(QtWidgets.QMainWindow, disign.Ui_MainWindow):
 
 
 def main():
-    app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
-    window = ExampleApp()  # Создаём объект класса ExampleApp
-    window.show()  # Показываем окно
-    app.exec_()  # и запускаем приложение
+    app = QtWidgets.QApplication(sys.argv)
+    window = ExampleApp()
+    window.show()
+    app.exec_()
 
 
-if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем
-    main()  # то запускаем функцию main()
+if __name__ == '__main__':
+    main()
